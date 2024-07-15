@@ -31,12 +31,6 @@ jobs:
       run: mvn clean install -DskipTests
     - name: Run Maven Test
       run: mvn test
-    - name: Print conditions
-      run: |
-        echo ${{ github.event.pull_request.head.repo.full_name }}
-        echo ${{ github.repository }}
-        echo ${{ github.ref }}
-        echo "${{ github.event.pull_request.head.repo.full_name == github.repository || github.ref == 'refs/heads/main' }}"
     - name: Upload Unit Test Results
       uses: actions/upload-artifact@v4  # upload test results
       if: success() || failure()
