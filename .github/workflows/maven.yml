@@ -31,9 +31,10 @@ jobs:
       run: mvn clean install -DskipTests
     - name: Run Maven Test
       run: mvn test
-    - name: Upload Unit Test Results
-      uses: actions/upload-artifact@v4  # upload test results
-      if: success() || failure()
+    - name: Unit Test Results
+      uses: dorny/test-reporter@v1
+      if: ${{ github.event.pull_request.head.repo.full_name == github.repository || github.ref == 'refs/heads/main' }} && {{ success() || failure() }}
       with:
-        name: service-unit-test-result
+        name: Rating-Service-Unit-Test-Results
         path: "target/**/surefire-reports/*.xml"
+        reporter: java-junit
