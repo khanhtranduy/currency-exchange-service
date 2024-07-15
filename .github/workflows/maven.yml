@@ -14,6 +14,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  FROM_MAIN_BRANCH: (github.event.pull_request.head.repo.full_name == github.repository || github.ref == 'refs/heads/main')
+
 jobs:
   build:
 
@@ -34,7 +37,7 @@ jobs:
     - name: Unit Test Results
       uses: dorny/test-reporter@v1
       if: |
-        (github.event.pull_request.head.repo.full_name == github.repository || github.ref == 'refs/heads/main') && 
+        FROM_MAIN_BRANCH && 
         (success() || failure())
       with:
         name: Rating-Service-Unit-Test-Results
