@@ -15,6 +15,5 @@ jobs:
     - uses: dorny/test-reporter@v1
       with:
         artifact: Service-Unit-Test-Results            # artifact name
-        name: Service-Unit-Test-Results
-        path: 'surefire-reports/*.xml'                     # Path to test results (inside artifact .zip)
+        path: 'surefire-reports/*.xml'                 # Path to test results (inside artifact .zip)
         reporter: java-junit              # Format of test results
