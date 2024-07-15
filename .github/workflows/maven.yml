@@ -31,11 +31,17 @@ jobs:
       run: mvn clean install -DskipTests
     - name: Run Maven Test
       run: mvn test
+    - name: Print conditions
+      run: |
+        echo "$github.event.pull_request.head.repo.full_name"
+        echo "$github.ref"
+        echo "${{ github.event.pull_request.head.repo.full_name == github.repository || github.ref == 'refs/heads/main' }}"
     - name: Unit Test Results
       uses: dorny/test-reporter@v1
       if: |
         ${{ github.event.pull_request.head.repo.full_name == github.repository || github.ref == 'refs/heads/main' }} &&
         (success() || failure())
+        echo ${{ github.event.pull_request.head.repo.full_name == github.repository || github.ref == 'refs/heads/main' }} && (success() || failure())
       with:
         name: Service-Unit-Test-Results
         path: "target/**/surefire-reports/*.xml"
