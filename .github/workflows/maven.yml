@@ -36,7 +36,7 @@ jobs:
       run: mvn test
     - name: Unit Test Results
       uses: dorny/test-reporter@v1
-      if: ${{ env.FROM_MAIN_BRANCH == 'true' && (success() || failure()) }}
+      if: ${{ env.FROM_MAIN_BRANCH && (success() || failure()) }}
       with:
         name: Rating-Service-Unit-Test-Results
         path: "target/**/surefire-reports/*.xml"
