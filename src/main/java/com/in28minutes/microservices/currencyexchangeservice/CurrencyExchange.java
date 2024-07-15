@@ -22,7 +22,6 @@ public class CurrencyExchange {
 	private String environment;
 
 	public CurrencyExchange() {
-		
 	}
 	
 	public CurrencyExchange(Long id, String from, String to, BigDecimal conversionMultiple) {
