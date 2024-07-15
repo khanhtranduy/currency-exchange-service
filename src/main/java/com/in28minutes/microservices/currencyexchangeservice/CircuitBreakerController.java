@@ -28,6 +28,7 @@ public class CircuitBreakerController {
 //		ResponseEntity<String> forEntity = new RestTemplate().getForEntity("http://localhost:8080/some-dummy-url", 
 //					String.class);
 //		return forEntity.getBody();
+		
 		return "sample-api";
 	}
 	
