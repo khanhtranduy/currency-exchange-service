@@ -39,7 +39,7 @@ jobs:
         echo "${{ github.event.pull_request.head.repo.full_name == github.repository || github.ref == 'refs/heads/main' }}"
     - name: Unit Test Results
       uses: dorny/test-reporter@v1
-      if: ${{ github.event.pull_request.head.repo.full_name == github.repository || github.ref == 'refs/heads/main' }} && (success() || failure())
+      if: success() || failure()
       with:
         name: Service-Unit-Test-Results
         path: "target/**/surefire-reports/*.xml"
