@@ -33,7 +33,7 @@ jobs:
       run: mvn test
     - name: Print conditions
       run: |
-        echo ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+        echo ${{ github.event.pull_request.head.repo.full_name }}
         echo ${{ github.ref }}
         echo "${{ github.event.pull_request.head.repo.full_name == github.repository || github.ref == 'refs/heads/main' }}"
     - name: Unit Test Results
