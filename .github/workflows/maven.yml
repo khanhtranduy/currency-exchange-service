@@ -37,13 +37,12 @@ jobs:
         echo ${{ github.repository }}
         echo ${{ github.ref }}
         echo "${{ github.event.pull_request.head.repo.full_name == github.repository || github.ref == 'refs/heads/main' }}"
-    - name: Unit Test Results
-      uses: dorny/test-reporter@v1
+    - name: Upload Unit Test Results
+      uses: actions/upload-artifact@v4  # upload test results
       if: success() || failure()
       with:
         name: Service-Unit-Test-Results
         path: "target/**/surefire-reports/*.xml"
-        reporter: java-junit
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
