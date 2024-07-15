@@ -38,7 +38,7 @@ jobs:
         (success() || failure())
       with:
         name: Service-Unit-Test-Results
-        path: "surefire-reports/*.xml"
+        path: reports/jest-*.xml    # Path to test results
         reporter: java-junit
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
