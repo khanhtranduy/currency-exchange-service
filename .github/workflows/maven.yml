@@ -14,13 +14,13 @@ on:
   pull_request:
     branches: [ "main" ]
 
-env:
-  FROM_MAIN_BRANCH: (github.event.pull_request.head.repo.full_name == github.repository || github.ref == 'refs/heads/main')
-
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    
+    env:
+      FROM_MAIN_BRANCH: ${{ github.event.pull_request.head.repo.full_name == github.repository || github.ref == 'refs/heads/main' }}
 
     steps:
     - uses: actions/checkout@v4
